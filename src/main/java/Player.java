@@ -6,8 +6,9 @@ public class Player {
 
     Map map = new Map();
 
-
     private ArrayList<Item> playerInventory = new ArrayList<>();
+
+    private String playerName;
 
     private Room currentRoom = map.getStarterRoom();
 
@@ -23,27 +24,22 @@ public class Player {
         this.currentRoom = currentRoom;
     }
 
+    public void setPlayerName(String PlayerName) {
+        this.playerName = playerName;
+    }
     public String look() {
         return currentRoom.toString();
     }
 
-    public ArrayList<Item> getPlayerInventory() {
-        return playerInventory;
-    }
-
-    public void addItem(Item item) {
-        playerInventory.add(item);
+    public int getPlayerHealthPoints() {
+        return playerHealthPoints;
     }
 
     public ArrayList<Item> inventoryShow() {
         return playerInventory;
     }
 
-    public void playerHealth() {
-        System.out.println("Current health status: " + playerHealthPoints);
-    }
-
-    public void eat(String foodName) {
+    public boolean eat(String foodName) {
         for (Item item : playerInventory) {
             if (item instanceof Food) {
                 if (foodName.equals(item.getName())) {
@@ -55,14 +51,13 @@ public class Player {
                 }
 
             }
-        }
+        } return false;
     }
 
     public boolean weaponEquip(String weaponName) {
         for (Item item : playerInventory) {
             if (item instanceof Weapon) {
                 if (item.getName().equals(weaponName)) {
-                    getPlayerInventory();
                     Weapon selectedWeapon = (Weapon) item;
                     weaponEquipped = selectedWeapon;
                     playerInventory.remove(selectedWeapon);
@@ -97,7 +92,8 @@ public class Player {
     public void attackHealthPlayer(int damage) {
         playerHealthPoints -= damage;
     }
-    public void attackEnemy() {
+
+    public boolean attackEnemy() {
         if (currentRoom.enemyCheck() == false) {
             System.out.println("There are no enemies to fight.");
         } else if (weaponEquipped == null) {
@@ -120,6 +116,31 @@ public class Player {
                 System.out.println("You have slain: " + enemy.getEnemyName());
                 currentRoom.removeEnemy(enemy);
             }
-        }
+        } return false;
+    }
+
+    /*public void addItem(Item item) {
+        return currentRoom.addItem(item);
+    }
+
+     */
+
+    public boolean takeItem (String itemName) {
+        for (Item item : currentRoom.getItems()) {
+            if (item.getName().equals(itemName)) {
+                playerInventory.add(item);
+                currentRoom.getItems().remove(item);
+                return true;
+            }
+        } return false;
+    }
+
+    public boolean dropItem (String itemName) {
+        for (Item item : currentRoom.getItems()) {
+            if (item.getName().equals(itemName)) {
+                currentRoom.getItems().add(item);
+                playerInventory.remove(itemName);
+            } return true;
+        } return false;
     }
 }
