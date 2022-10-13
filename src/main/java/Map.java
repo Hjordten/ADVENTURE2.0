@@ -73,11 +73,14 @@ public class Map {
         room2.addMeleeWeapon(room3, "polearm", 200);
         room3.addRangedWeapon(room3, "longbow",400, 8);
         room1.addEnemy(room1, "orc", 230, "scimitar", 5);
-        room3.addEnemy(room3, "golem", 150, "Stone hand", 5);
-        room1.addEnemy(room1, "kobold", 300, "Pickaxe", 1);
-        room1.addEnemy(room1, "darkling", 350, "Shadow magic", 30);
-        room1.addEnemy(room1, "nighelf", 200, "Magic staff", 20);
-        room1.addEnemy(room1, "Dragon", 800, "Flame breath", 50);
+        room2.addEnemy(room2, "golem", 150, "stone hand", 5);
+        room3.addEnemy(room3, "kobold", 300, "pickaxe", 1);
+        room4.addEnemy(room4, "darkling", 350, "shadow magic", 30);
+        room5.addEnemy(room5, "nightelf", 200, "magic staff", 20);
+        room6.addEnemy(room6, "dragon", 800, "flame breath", 50);
+        room7.addEnemy(room6, "tidelord", 800, "tidal wave", 50);
+        room8.addEnemy(room6, "shadowdancer", 800, "shadowstrike", 50);
+        room9.addEnemy(room6, "necrolord", 800, "haunt", 50);
 
 
     }

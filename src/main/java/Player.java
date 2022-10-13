@@ -35,7 +35,7 @@ public class Player {
         return playerHealthPoints;
     }
 
-    public ArrayList<Item> inventoryShow() {
+    public ArrayList<Item> getPlayerInventory() {
         return playerInventory;
     }
 
@@ -119,12 +119,6 @@ public class Player {
         } return false;
     }
 
-    /*public void addItem(Item item) {
-        return currentRoom.addItem(item);
-    }
-
-     */
-
     public boolean takeItem (String itemName) {
         for (Item item : currentRoom.getItems()) {
             if (item.getName().equals(itemName)) {
@@ -136,10 +130,10 @@ public class Player {
     }
 
     public boolean dropItem (String itemName) {
-        for (Item item : currentRoom.getItems()) {
-            if (item.getName().equals(itemName)) {
+        for (Item item : playerInventory) {
+            if (item.getName().equalsIgnoreCase(itemName)) {
+                playerInventory.remove(item);
                 currentRoom.getItems().add(item);
-                playerInventory.remove(itemName);
             } return true;
         } return false;
     }

@@ -14,9 +14,6 @@ public class Weapon extends Item {
         return true;
     }
 
-
-
-
     @Override
     public String toString() {
         return super.toString();

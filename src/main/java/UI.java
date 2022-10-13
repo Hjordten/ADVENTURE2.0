@@ -4,11 +4,15 @@ public class UI {
 
     private Adventure adventure = new Adventure();
     private Scanner sc = new Scanner(System.in);
-    String userInput = sc.nextLine().toLowerCase();
+
+
+    public String getUserInput() {
+        return sc.nextLine().toLowerCase();
+    }
 
     public void startUI() {
         System.out.println("Choose a player name:");
-        adventure.setName(userInput);
+        adventure.setName(getUserInput());
 
         System.out.println("""
                 Welcome to our text adventure
@@ -40,7 +44,7 @@ public class UI {
     private void command() {
         boolean player = true;
         while (player) {
-            String[] userInputs = userInput.split(" ");
+            String[] userInputs = getUserInput().split(" ");
             String command = userInputs[0];
             String userChoice = "";
             if (userInputs.length > 1) {
@@ -74,7 +78,6 @@ public class UI {
                     } else {
                         System.out.println("You can't take this item");
                     }
-                    System.out.println("Enter the number of the item you wanna remove");
                     System.out.println("Enter command: ");
                     break;
                 case "drop":
@@ -84,7 +87,6 @@ public class UI {
                     } else {
                         System.out.println("You can't drop this item");
                     }
-                    System.out.println("Enter the number of the item you wanna drop");
                     break;
                 case "health":
                     System.out.println("Current HP: " + adventure.playerHealth());

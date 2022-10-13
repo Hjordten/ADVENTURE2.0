@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Adventure {
 
     Map map = new Map();
-    Player player;
+    Player player = new Player();
 
     public boolean go(String direction){
         return player.move(direction);
@@ -15,7 +15,7 @@ public class Adventure {
         player.setPlayerName(name);
     }
     public ArrayList<Item> inventoryShow() {
-    return player.inventoryShow();
+    return player.getPlayerInventory();
     }
 
     public boolean weaponEquip(String weaponEquip) {
@@ -25,12 +25,6 @@ public class Adventure {
     public Room getCurrentRoom() {
         return player.getCurrentRoom();
     }
-
-    /*public void addItem() {
-        return player.addItem();
-    }
-
-     */
 
     public boolean take(String itemName) {
         return player.takeItem(itemName);
@@ -45,7 +39,7 @@ public class Adventure {
     }
 
     public ArrayList<Item> getPlayerInventory() {
-        return getPlayerInventory();
+        return player.getPlayerInventory();
     }
 
     public boolean eat(String foodName) {
